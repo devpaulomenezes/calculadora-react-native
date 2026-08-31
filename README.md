@@ -97,7 +97,6 @@ Não utilizamos `eval()` para avaliar expressões. Cada operação é tratada ex
 
 - [Documentação oficial do React Native](https://reactnative.dev/)
 - [Documentação do Expo](https://docs.expo.dev/)
-- PINHO, D. M.; ESCUDELARIO, B. *React Native: Desenvolvimento de aplicativos mobile com React*. Casa do Código, 2021.
 
 ## 📝 Licença
 
