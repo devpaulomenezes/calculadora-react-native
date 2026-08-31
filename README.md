@@ -105,11 +105,11 @@ Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) par
 
 ## 👨‍🎓 Autor
 
-**[SEU NOME COMPLETO]**
-- GitHub: [@SEU_USUARIO](https://github.com/SEU_USUARIO)
+**Paulo Moura Menezes**
+- GitHub: [@devpaulomenezes](https://github.com/devpaulomenezes)
 - Curso: Tecnologia em Análise e Desenvolvimento de Sistemas
 - Disciplina: Programação para Dispositivos Móveis
-- Período: [Xº]
+- Período: [5º]
 
 ---
 
