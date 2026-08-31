@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
-import { Display } from './src/components/Display';
+import { useState } from 'react';
+import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import { Button } from './src/components/Button';
-import { calculate, formatResult, Operation } from './src/utils/calculator';
+import { Display } from './src/components/Display';
 import { theme } from './src/styles/theme';
+import { calculate, formatResult, Operation } from './src/utils/calculator';
 
 export default function App() {
     const [displayValue, setDisplayValue] = useState('0');
@@ -14,7 +14,7 @@ export default function App() {
     // --- Manipulação de dígitos ---
     const inputDigit = (digit: string) => {
         if (waitingForOperand) {
-            setDisplayValue(digit);
+            setDisplayValue(digit === '.' ? '0.' : digit);
             setWaitingForOperand(false);
         } else {
             // Permite apenas um ponto decimal por número
@@ -29,7 +29,7 @@ export default function App() {
 
         if (operand === null) {
             setOperand(current);
-        } else if (operation) {
+        } else if (operation && !waitingForOperand) {
             const result = calculate(operand, current, operation);
             if (typeof result === 'string') {
                 setDisplayValue(result);
@@ -75,18 +75,20 @@ export default function App() {
 
     // --- Alternar sinal ---
     const handleToggleSign = () => {
-        if (displayValue === '0') return;
+        if (displayValue === '0' || isNaN(Number(displayValue))) return;
         setDisplayValue(displayValue.startsWith('-') ? displayValue.slice(1) : '-' + displayValue);
     };
 
     // --- Porcentagem ---
     const handlePercentage = () => {
         const current = parseFloat(displayValue);
+        if (isNaN(current)) return;
         setDisplayValue(formatResult(current / 100));
     };
 
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar barStyle="light-content" backgroundColor={theme.colors.background} />
             <Display value={displayValue} />
 
             <View style={styles.keyboard}>
